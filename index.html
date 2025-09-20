@@ -87,8 +87,6 @@
             position: relative;
             overflow: hidden;
             border: 4px solid rgba(255,255,255,0.2);
-            background-size: cover;
-            background-position: center;
         }
         
         .profile-image::before {
@@ -102,6 +100,21 @@
             background: rgba(255,255,255,0.15);
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.1);
+        }
+        
+        .profile-image-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .modal {
@@ -306,7 +319,7 @@
                 <a href="#home" class="block px-3 py-3 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-md transition-all">Home</a>
                 <a href="#about" class="block px-3 py-3 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-md transition-all">About</a>
                 <a href="#services" class="block px-3 py-3 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-md transition-all">Services</a>
-                <a href="#portfolio" class="block px-3 py-3 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-md transition-all">Portfolio</a>
+                <a href="#portfolio" class="block px-3 py-3 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-md transitionall">Portfolio</a>
                 <a href="#skills" class="block px-3 py-3 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-md transition-all">Skills</a>
                 <a href="#contact" class="block px-3 py-3 text-gray-700 hover:text-purple-600 hover:bg-gray-50 rounded-md transition-all">Contact</a>
             </div>
@@ -356,8 +369,9 @@
                 </div>
                 <div class="flex justify-center order-1 lg:order-2 fade-in">
                     <div class="text-center">
-                        <!-- Updated Profile Image -->
-                        <div class="profile-image w-64 h-64 sm:w-80 sm:w-80 lg:w-96 lg:h-96 rounded-full floating-animation shadow-2xl mx-auto" style="background-image: url('assets/profile.png')">
+                        <!-- Updated Profile Image with inner circle -->
+                        <div class="profile-image w-64 h-64 sm:w-80 sm:w-80 lg:w-96 lg:h-96 rounded-full floating-animation shadow-2xl mx-auto">
+                            <div class="profile-image-inner" style="background-image: url('assets/profile.png')"></div>
                         </div>
                         <div class="mt-6">
                             <span class="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
@@ -524,7 +538,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-4">E-commerce Solutions</h3>
                     <p class="text-gray-600 mb-6">Complete e-commerce platforms with payment integration, inventory management, and analytics.</p>
-                    <ul class="text-sm text-gray-600 space-y-2">
+                    <ul class="text-sm text-gray-600 space-Y-2">
                         <li><i class="fas fa-check text-purple-600 mr-2"></i>Custom E-commerce Sites</li>
                         <li><i class="fas fa-check text-purple-600 mr-2"></i>Payment Gateway Integration</li>
                         <li><i class="fas fa-check text-purple-600 mr-2"></i>Inventory Management</li>
@@ -773,8 +787,8 @@
                                 <span class="font-semibold text-gray-700">GraphQL & REST APIs</span>
                                 <span class="text-purple-600 font-medium">83%</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-3">
-                                <div class="skill-bar bg-gradient-to-r from-pink-500 to-rose-500 h-3 rounded-full" style="width: 83%"></div>
+                            <div class="w-full bg-gray极速赛车开奖直播
+                            <div class="skill-bar bg-gradient-to-r from-pink-500 to-rose-500 h-3 rounded-full" style="width: 83%"></div>
                             </div>
                         </div>
                     </div>
@@ -815,7 +829,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">WhatsApp</h4>
-                                <p class="text-gray-600">+234 90 7152 4404</p>
+                                <p class="text-gray-600">+1 (555) 123-4567</p>
                                 <p class="text-gray-500 text-sm">Available Mon-Fri, 9AM-6PM GMT</p>
                             </div>
                         </div>
@@ -885,7 +899,7 @@
                         
                         <p class="text-sm text-gray-500 mt-4 text-center">
                             <i class="fas fa-shield-alt mr-1"></i>
-                            <strong>Demo Form:</strong> This is a sample contact form for portfolio demonstration.
+                            Your message will be sent directly to techmagnet.pro@gmail.com
                         </p>
                     </form>
                 </div>
@@ -1007,7 +1021,7 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -1079,11 +1093,31 @@
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Show success message (demo)
-            alert('Thank you for your message! This is a demo form. In a real implementation, this would send your message to the server.');
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                company: formData.get('company'),
+                message: formData.get('message')
+            };
             
-            // Reset form
-            this.reset();
+            // Send email using EmailJS
+            emailjs.send('service_your_service_id', 'template_your_template_id', {
+                from_name: `${data.firstName} ${data.lastName}`,
+                from_email: data.email,
+                company: data.company,
+                message: data.message,
+                to_email: 'techmagnet.pro@gmail.com'
+            }, 'your_public_key')
+            .then(function(response) {
+                alert('Thank you for your message! It has been sent successfully.');
+                document.getElementById('contact-form').reset();
+            }, function(error) {
+                alert('There was an error sending your message. Please try again later.');
+                console.error('EmailJS error:', error);
+            });
         });
 
         // Active navigation highlighting
@@ -1120,6 +1154,14 @@
                 });
             }, 500);
         });
+    </script>
+    <!-- Load EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual EmailJS public key
+        })();
     </script>
 </body>
 </html>
