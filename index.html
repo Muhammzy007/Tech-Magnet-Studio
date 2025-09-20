@@ -12,10 +12,12 @@
     <style>
         * {
             scroll-behavior: smooth;
+            box-sizing: border-box;
         }
         
         body {
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
         
         .gradient-bg {
@@ -265,6 +267,93 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Responsive optimizations */
+        @media (max-width: 768px) {
+            .hero-content {
+                text-align: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .profile-image {
+                width: 250px;
+                height: 250px;
+                margin: 0 auto;
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .stats-counter {
+                font-size: 2.5rem;
+            }
+            
+            .project-card {
+                margin-bottom: 2rem;
+            }
+            
+            .tech-stack-item {
+                margin-bottom: 1rem;
+            }
+            
+            .contact-info {
+                margin-bottom: 2rem;
+            }
+            
+            .footer-links {
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .stats-counter {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Mobile menu improvements */
+        @media (max-width: 767px) {
+            #mobile-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                z-index: 100;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -317,15 +406,15 @@
     <section id="home" class="gradient-bg min-h-screen flex items-center pt-16 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="text-white order-2 lg:order-1 fade-in">
+                <div class="text-white order-2 lg:order-1 fade-in hero-content">
                     <div class="mb-6">
                         <span class="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
                             👋 Welcome to my digital world
                         </span>
                     </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight hero-title">
                         <span class="text-white">Tech-Magnet-</span><span class="text-yellow-300">Studio</span><br>
-                        <span class="text-2xl sm:text-3xl lg:text-4xl text-gray-200 font-medium">Creative Designer & Full-Stack Developer</span>
+                        <span class="text-2xl sm:text-3xl lg:text-4xl text-gray-200 font-medium hero-subtitle">Creative Designer & Full-Stack Developer</span>
                     </h1>
                     <p class="text-lg mb-8 text-gray-100 leading-relaxed max-w-2xl">
                         Transforming innovative ideas into exceptional digital experiences through cutting-edge design, 
@@ -339,7 +428,7 @@
                             <i class="fas fa-paper-plane mr-2"></i>Get In Touch
                         </a>
                     </div>
-                    <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-6 hero-stats">
                         <div class="text-center">
                             <div class="text-2xl font-bold">10+</div>
                             <div class="text-sm text-gray-300">Years Experience</div>
@@ -378,8 +467,8 @@
     <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">About Our Team</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 section-title">About Our Team</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto section-subtitle">
                     We are Tech-Magnet-Studio, a team of passionate designers and full-stack developers with over 10 years of experience creating 
                     digital solutions that combine aesthetic appeal with functional excellence. Our remote team works worldwide to deliver exceptional results.
                 </p>
@@ -469,8 +558,8 @@
     <section id="services" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Services We Offer</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 section-title">Services We Offer</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto section-subtitle">
                     Comprehensive digital solutions tailored to your business needs and goals, delivered by our expert remote team
                 </p>
             </div>
@@ -567,8 +656,8 @@
     <section id="portfolio" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Featured Projects</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 section-title">Featured Projects</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto section-subtitle">
                     A showcase of our recent projects and creative work that demonstrate our team's skills and expertise
                 </p>
             </div>
@@ -689,8 +778,8 @@
     <section id="skills" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Skills & Expertise</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 section-title">Skills & Expertise</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto section-subtitle">
                     A comprehensive toolkit of modern technologies and methodologies our team uses to create exceptional digital experiences
                 </p>
             </div>
@@ -787,14 +876,14 @@
     <section id="contact" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Let's Work Together</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 section-title">Let's Work Together</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto section-subtitle">
                     Ready to bring your ideas to life? We'd love to hear about your project and discuss how our team can create something amazing together.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="fade-in">
+                <div class="fade-in contact-info">
                     <h3 class="text-2xl font-bold text-gray-800 mb-8">Get In Touch</h3>
                     
                     <div class="space-y-6 mb-8">
@@ -804,7 +893,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">Email</h4>
-                                <p class="text-gray-600">hello@techmagnetstudio.com</p>
+                                <p class="text-gray-600">techmagnet.pro@gmail.com</p>
                                 <p class="text-gray-500 text-sm">We'll respond within 24 hours</p>
                             </div>
                         </div>
@@ -815,7 +904,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800 mb-1">WhatsApp</h4>
-                                <p class="text-gray-600">+1 (555) 123-4567</p>
+                                <p class="text-gray-600">+234 90 7152 4044</p>
                                 <p class="text-gray-500 text-sm">Available Mon-Fri, 9AM-6PM GMT</p>
                             </div>
                         </div>
@@ -885,7 +974,7 @@
                         
                         <p class="text-sm text-gray-500 mt-4 text-center">
                             <i class="fas fa-shield-alt mr-1"></i>
-                            <strong>Demo Form:</strong> This is a sample contact form for portfolio demonstration.
+                            <strong>Contact Form:</strong> This is a sample contact form for portfolio demonstration.
                         </p>
                     </form>
                 </div>
@@ -925,7 +1014,7 @@
                     </div>
                 </div>
                 
-                <div>
+                <div class="footer-links">
                     <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
                     <ul class="space-y-3">
                         <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
@@ -936,7 +1025,7 @@
                     </ul>
                 </div>
                 
-                <div>
+                <div class="footer-links">
                     <h4 class="text-lg font-semibold mb-6">Services</h4>
                     <ul class="space-y-3">
                         <li><span class="text-gray-400 hover:text-white transition-colors cursor-pointer">Web Development</span></li>
@@ -1079,8 +1168,29 @@
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Show success message (demo)
-            alert('Thank you for your message! This is a demo form. In a real implementation, this would send your message to the server.');
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link
+            const subject = `New message from ${firstName} ${lastName}`;
+            const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nCompany: ${company}\n\nMessage:\n${message}`;
+            
+            // Encode URI components
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent(body);
+            
+            // Create mailto URL
+            const mailtoUrl = `mailto:techmagnet.pro@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+            
+            // Open email client
+            window.location.href = mailtoUrl;
+            
+            // Show success message
+            alert('Thank you for your message! Your email client will open with a pre-filled message. Please click send to complete the process.');
             
             // Reset form
             this.reset();
